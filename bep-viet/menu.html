@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bếp Việt — Thực Đơn</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Bếp Việt <span>AUTHENTIC CUISINE</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+    <li><a href="booking.html">Đặt bàn</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+  <a href="booking.html"><button class="nav-btn">Đặt Bàn Ngay</button></a>
+</nav>
+
+<div class="menu-header">
+  <h2>Thực <span class="menu-gold">Đơn</span></h2>
+  <p>Những món ăn được chế biến theo công thức truyền thống</p>
+</div>
+
+<div class="section">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterMenu('all', this)">Tất cả</button>
+    <button class="filter-btn" onclick="filterMenu('pho', this)">Phở & Bún</button>
+    <button class="filter-btn" onclick="filterMenu('com', this)">Cơm</button>
+    <button class="filter-btn" onclick="filterMenu('goi', this)">Gỏi & Khai vị</button>
+    <button class="filter-btn" onclick="filterMenu('drink', this)">Đồ uống</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+    <div class="menu-card" data-cat="pho">
+      <div class="menu-img pho">🍜</div>
+      <div class="menu-body">
+        <p class="menu-name">Phở Bò Đặc Biệt</p>
+        <p class="menu-desc">Nước dùng ninh xương 12 tiếng, thịt bò tươi, rau thơm miền Bắc.</p>
+        <div class="menu-footer"><span class="menu-price">85.000₫</span><span class="menu-tag">Bestseller</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="pho">
+      <div class="menu-img bun">🍲</div>
+      <div class="menu-body">
+        <p class="menu-name">Bún Bò Huế</p>
+        <p class="menu-desc">Cay nồng đặc trưng xứ Huế, giò heo, chả Huế, rau sống.</p>
+        <div class="menu-footer"><span class="menu-price">80.000₫</span><span class="menu-tag">Đặc sản</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="pho">
+      <div class="menu-img pho">🍝</div>
+      <div class="menu-body">
+        <p class="menu-name">Bún Riêu Cua</p>
+        <p class="menu-desc">Riêu cua đồng, cà chua tươi, đậu hũ chiên, mắm tôm.</p>
+        <div class="menu-footer"><span class="menu-price">75.000₫</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="com">
+      <div class="menu-img com">🍱</div>
+      <div class="menu-body">
+        <p class="menu-name">Cơm Tấm Sườn Bì</p>
+        <p class="menu-desc">Cơm tấm miền Nam, sườn nướng mật ong, bì heo, chả trứng.</p>
+        <div class="menu-footer"><span class="menu-price">90.000₫</span><span class="menu-tag">Bestseller</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="com">
+      <div class="menu-img com">🍚</div>
+      <div class="menu-body">
+        <p class="menu-name">Cơm Gà Hội An</p>
+        <p class="menu-desc">Gà ta nấu cơm bằng nước dùng, hành phi, gừng muối.</p>
+        <div class="menu-footer"><span class="menu-price">95.000₫</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="goi">
+      <div class="menu-img goi">🥗</div>
+      <div class="menu-body">
+        <p class="menu-name">Gỏi Cuốn Tôm Thịt</p>
+        <p class="menu-desc">Bánh tráng tươi, tôm sú, thịt luộc, rau thơm, nước chấm đậu phộng.</p>
+        <div class="menu-footer"><span class="menu-price">65.000₫</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="goi">
+      <div class="menu-img goi">🥙</div>
+      <div class="menu-body">
+        <p class="menu-name">Chả Giò Rế</p>
+        <p class="menu-desc">Nhân thịt heo, mộc nhĩ, miến, cuốn bánh tráng rế giòn rụm.</p>
+        <div class="menu-footer"><span class="menu-price">70.000₫</span><span class="menu-tag">Giòn tan</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="drink">
+      <div class="menu-img drink">🧋</div>
+      <div class="menu-body">
+        <p class="menu-name">Cà Phê Sữa Đá</p>
+        <p class="menu-desc">Cà phê Robusta Buôn Ma Thuột, sữa đặc Ông Thọ nguyên bản.</p>
+        <div class="menu-footer"><span class="menu-price">35.000₫</span></div>
+      </div>
+    </div>
+    <div class="menu-card" data-cat="drink">
+      <div class="menu-img drink">🍹</div>
+      <div class="menu-body">
+        <p class="menu-name">Nước Chanh Dây</p>
+        <p class="menu-desc">Chanh dây Tây Nguyên tươi, đường thốt nốt, đá viên mát lạnh.</p>
+        <div class="menu-footer"><span class="menu-price">40.000₫</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2024 <span>Bếp Việt</span> — Hương vị quê hương giữa lòng thành phố</footer>
+
+<script>
+function filterMenu(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

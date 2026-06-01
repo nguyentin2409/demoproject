@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bếp Việt — Đặt Bàn</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Bếp Việt <span>AUTHENTIC CUISINE</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+    <li><a href="booking.html" class="active">Đặt bàn</a></li>
+    <li><a href="contact.html">Liên hệ</a></li>
+  </ul>
+  <a href="booking.html"><button class="nav-btn">Đặt Bàn Ngay</button></a>
+</nav>
+
+<div class="page-header">
+  <h2>Đặt <span style="color:#C9A84C">Bàn</span></h2>
+  <p>Chúng tôi sẽ xác nhận đặt bàn qua điện thoại trong vòng 30 phút</p>
+</div>
+
+<div class="booking-wrap">
+  <div class="booking-card">
+    <div class="form-grid" id="bookingForm">
+      <div class="form-group">
+        <label>Họ và tên *</label>
+        <input type="text" id="f-name" placeholder="Nguyễn Văn A">
+        <span class="error-msg" id="err-name">Vui lòng nhập họ tên</span>
+      </div>
+      <div class="form-group">
+        <label>Số điện thoại *</label>
+        <input type="tel" id="f-phone" placeholder="0901 234 567">
+        <span class="error-msg" id="err-phone">Số điện thoại không hợp lệ</span>
+      </div>
+      <div class="form-group">
+        <label>Ngày đặt bàn *</label>
+        <input type="date" id="f-date">
+        <span class="error-msg" id="err-date">Vui lòng chọn ngày</span>
+      </div>
+      <div class="form-group">
+        <label>Giờ đến *</label>
+        <select id="f-time">
+          <option value="">-- Chọn giờ --</option>
+          <option>10:00</option><option>11:00</option><option>11:30</option>
+          <option>12:00</option><option>12:30</option><option>13:00</option>
+          <option>17:00</option><option>17:30</option><option>18:00</option>
+          <option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option>
+        </select>
+        <span class="error-msg" id="err-time">Vui lòng chọn giờ</span>
+      </div>
+      <div class="form-group">
+        <label>Số người *</label>
+        <select id="f-guests">
+          <option value="">-- Số người --</option>
+          <option>1 người</option><option>2 người</option><option>3 người</option>
+          <option>4 người</option><option>5-6 người</option><option>7-10 người</option><option>10+ người</option>
+        </select>
+        <span class="error-msg" id="err-guests">Vui lòng chọn số người</span>
+      </div>
+      <div class="form-group">
+        <label>Dịp đặc biệt</label>
+        <select id="f-occasion">
+          <option value="">-- Không có --</option>
+          <option>Sinh nhật 🎂</option><option>Kỷ niệm 💑</option>
+          <option>Họp mặt gia đình</option><option>Tiệc công ty</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Yêu cầu đặc biệt</label>
+        <textarea id="f-note" placeholder="Dị ứng thực phẩm, yêu cầu chỗ ngồi, trang trí bàn..."></textarea>
+      </div>
+    </div>
+    <button class="btn-book" onclick="submitBooking()">XÁC NHẬN ĐẶT BÀN</button>
+    <div class="success-msg" id="successMsg">
+      <h3>🎉 Đặt bàn thành công!</h3>
+      <p>Cảm ơn bạn đã chọn Bếp Việt. Chúng tôi sẽ gọi xác nhận trong vòng 30 phút.<br>Hẹn gặp bạn tại nhà hàng!</p>
+    </div>
+  </div>
+</div>
+
+<footer>© 2024 <span>Bếp Việt</span> — Hương vị quê hương giữa lòng thành phố</footer>
+
+<script>
+function submitBooking() {
+  let valid = true;
+  const fields = [
+    { id: 'f-name', err: 'err-name', check: v => v.trim().length > 1 },
+    { id: 'f-phone', err: 'err-phone', check: v => /^[0-9]{9,11}$/.test(v.replace(/\s/g,'')) },
+    { id: 'f-date', err: 'err-date', check: v => v !== '' },
+    { id: 'f-time', err: 'err-time', check: v => v !== '' },
+    { id: 'f-guests', err: 'err-guests', check: v => v !== '' },
+  ];
+  fields.forEach(f => {
+    const input = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    const ok = f.check(input.value);
+    input.classList.toggle('error', !ok);
+    err.classList.toggle('show', !ok);
+    if (!ok) valid = false;
+  });
+  if (valid) {
+    document.getElementById('bookingForm').style.display = 'none';
+    document.querySelector('.btn-book').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  }
+}
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('f-date').min = today;
+</script>
+</body>
+</html>
